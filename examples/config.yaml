@@ -1,0 +1,30 @@
+# Example configuration for the synthetic bundle in examples/data/.
+# Print every option with its default: `bill-redact config`.
+
+# Page types that must all be present in a bundle. The values on these pages
+# are pooled, so a total on one document can explain the line amounts on
+# another. Leave this out to treat all pages as one pool.
+documents:
+  - name: invoice
+    keywords: ["invoice"]
+  - name: delivery_note
+    keywords: ["delivery note"]
+
+# Page indices (0-based) never classified, e.g. a cover sheet.
+skip_pages: [0]
+
+quantity:
+  units: [KG, KGS, T, TONNES, PCS]
+  decimal_places_without_unit: [3]   # weights are printed with 3 decimals here
+
+amounts:
+  relative_tolerance: 0.01
+  sum_tolerance: 1.0
+  max_terms: 6
+
+amount_in_words_patterns:
+  - '\b(dollars?|usd)\b.*\bonly\b'
+
+fill: [0, 0, 0]
+pad: 2
+fail_closed: true

@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bill-redaction-tool"
+version = "0.2.0"
+description = "Offline redaction of amounts, rates and quantities on bills, invoices and delivery notes, found through arithmetic instead of fixed layouts"
+readme = "README.md"
+requires-python = ">=3.9"
+keywords = ["redaction", "invoice redaction", "document redaction", "PII redaction", "OCR", "PDF", "ONNX", "PaddleOCR"]
+dependencies = [
+    "PyMuPDF>=1.23",
+    "Pillow>=9",
+    "numpy>=1.23",
+    "opencv-python-headless>=4.7",
+    "PyYAML>=6",
+]
+
+[project.optional-dependencies]
+ocr = ["onnxruntime>=1.16", "pyclipper>=1.3", "shapely>=2.0"]
+dev = ["pytest>=7"]
+
+[project.scripts]
+bill-redact = "bill_redact.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

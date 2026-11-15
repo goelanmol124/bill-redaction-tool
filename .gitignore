@@ -1,0 +1,36 @@
+# secrets
+.env
+.env.*
+!.env.example
+.dev.vars
+*.pem
+credentials*.json
+token*.json
+
+# python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+dist/
+build/
+
+# node / tooling
+node_modules/
+.wrangler/
+*.log
+
+# outputs, models and generated data
+output/
+models/
+*.onnx
+examples/data/
+examples/output/
+
+# editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
